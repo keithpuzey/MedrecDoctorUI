@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" ng-app="medrecApp">
+
+<head id="head">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="Medical Records" />
+	<title>Physician Home</title>
+</head>
+
+<body id="body" style="background-color: powderblue;">
+	<div id="bar" class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="brand" href="#">Mary</a>
+
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="active"><a href="#">Home
+						</a></li>
+						<li><a data-toggle="modal" href="#logoutModal">Logout </a></li>
+					</ul>
+				</div>
+				<div class="navbar-text pull-right" ng-controller="TimeCtrl as T1">
+					<p>{{T1.timeString}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="blank80"></div>
+	<div class="hide">
+		<input id="a_name" value="administrator" />
+	</div>
+	<div id="logoutModal" class="modal hide fade signin">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h3>Physician - Mary</h3>
+		</div>
+		<div class="modal-body">
+			<h4>Please be sure to logout.</h4>
+			<form id="logout" name="logout" method="get" action="index.html" class="form-signin" enctype="application/x-www-form-urlencoded">
+				<input type="hidden" name="logout" value="logout" /> <input id="logout:action" type="submit" name="logout:action" value="Logout"
+				 class="btn btn-warning pull-right" /><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0"
+				 value="-6776802002692572453:1112229349385525763" autocomplete="off" />
+			</form>
+		</div>
+	</div>
+
+	<div class="hide">
+		<input id="cp" value="/medrec" />
+	</div>
+	<div id="container" class="container">
+
+		<hr class="featurette-divider" />
+
+		<div class="contents">
+			<div class="alert alert-success fade in">
+				<button type="button" class="close" data-dismiss="alert">×</button> Successful Login.
+			</div>
+
+			<div class="row">
+				<div class="span4">
+					<h3>Patient Info
+					</h3>
+				</div>
+			</div>
+			<div ng-controller="PatientDetailsCtrl">
+				<!--p>Select a Drug:</p-->
+				<div class="row">
+					<div class="span4">
+						<select ng-model="selectedPatient" ng-options="x.LASTNAME for x in patient" ng-init="selectedPatient = patient[0].LASTNAME"
+						 ng-change="selectedItemChanged()">
+					   <option value="">-- please select a patient --</option>
+					</select>
+					</div>
+				</div>
+
+				<!--div class="contents"-->
+				<!--div class="offset1"-->
+				<!--table id="patientTable" class="table table-hove span8"-->
+
+				<table id="patientTable" class="table table-hove span8">
+					<thead>
+						<tr>
+							<th scope="col">Username</th>
+							<th scope="col">Firstname</th>
+							<th scope="col">Lastname</th>
+							<th scope="col">Gender</th>
+							<th scope="col">DOB</th>
+							<th scope="col">SSN</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								{{selectedPatient.USERNAME}}
+							</td>
+							<td>
+								{{selectedPatient.FIRSTNAME}}
+							</td>
+							<td>
+								{{selectedPatient.LASTNAME}}
+							</td>
+							<td>{{selectedPatient.GENDER}} </td>
+							<td>{{selectedPatient.DOB}} </td>
+							<td>{{selectedPatient.SSN}} </td>
+						</tr>
+					</tbody>
+				</table>
+				<!--/div-->
+			</div>
+
+			<div class="row">
+				<div class="span4">
+					<h3>Drug Info
+					</h3>
+				</div>
+			</div>
+			<div ng-controller="DrugListCtrl">
+				<!--p>Select a Drug:</p-->
+				<select ng-model="selectedPrescription" ng-options="x.NAME for x in drug" ng-init="selectedPrescription = drug[0].NAME" ng-change="selectedItemChanged()">
+					   <option value="">-- please choose a drug --</option>
+					</select>
+				<h4>You have selected prescription: {{selectedPrescription.NAME}}</h4>
+				<br>
+
+				<div ng-if="hasDrugInfo">
+					<p>Company Number: {{drugresult.companynumb}}</p>
+					<p>Sender Organization: {{drugresult.sender.senderorganization}}</p>
+					<p>Patient Reactions: {{drugresult.patient.reaction[0].reactionmeddrapt}}</p>
+					<p>Drug Indication: {{drugresult.patient.drug[0].drugindication}}</p>
+					<p>Medicinal Product: {{drugresult.patient.drug[0].medicinalproduct}}</p>
+
+					<p>Manufacturer Names:
+						<ul>
+							<li ng-repeat="name in manufacturer">
+								{{name}}
+							</li>
+						</ul>
+					</p>
+				</div>
+			</div>
+
+
+
+
+			<!--div class="row">
+      <div class="span4 offset1">
+        <h3>Pending requests.</h3>
+
+        <p>View pending applicant details and approve or deny requests.</p>
+<form id="viewRegistered" name="viewRegistered" method="post" action="/medrec/admin/adminHome.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="viewRegistered" value="viewRegistered" />
+<input id="viewRegistered:action" type="submit" name="viewRegistered:action" value="Go" class="btn btn-primary btn-inverse pull-right" /><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:1" value="-6776802002692572453:1112229349385525763" autocomplete="off" />
+</form>
+      </div>
+      <div class="span4 offset1">
+        <h3>Statistics
+        </h3>
+
+        <p>Generate reports with financial statistics for patients, physicians, and prescriptions over a specified time period.
+        </p>
+        <a class="btn btn-primary btn-inverse pull-right" href="/medrec/admin/financialStatistics.xhtml">Go</a>
+      </div>
+    </div>
+    </div-->
+
+			<div class="row footer text-center">
+				<hr />
+				<p class="copyright">
+					<a href="http://www.ca.com" target="_blank">CA Home</a> | <a href="https://www.ca.com/us/products/product-list.html"
+					 target="_blank">Products </a> | <a href="https://www.ca.com/us/services-support.html?intcmp=headernav" target="_blank">Services</a>					| <a href="https://www.ca.com/us/services-support/ca-support.html" target="_blank">Support</a> | <a href="https://www.ca.com/us/education-training.html?intcmp=headernav"
+					 target="_blank">Education & Training</a> | <a href="https://www.ca.com/us/partners.html?intcmp=headernav" target="_blank">Partners</a>					| <a href="https://communities.ca.com/welcome" target="_blank">Communities</a> | <a href="https://www.ca.com/us/company.html"
+					 target="_blank">About</a>
+					<br />Copyright © 2017, CA and/or its affiliates. All rights reserved. <a href="https://www.ca.com/us/company/contact-us.html?intcmp=headernav"
+					 target="_blank">Contact Us</a><br />
+				</p>
+			</div>
+		</div>
+		<link href="medrec/physician/css/bootstrap.css" rel="stylesheet" />
+		<link href="medrec/physician/css/bootstrap-responsive.css" rel="stylesheet" />
+		<link href="medrec/physician/css/medrec.css" rel="stylesheet" />
+		<script type="text/javascript" src="medrec/physician/js/jquery.js"></script>
+		<script type="text/javascript" src="medrec/physician/js/bootstrap.js"></script>
+		<script type="text/javascript" src="medrec/physician/js/angular.js"></script>
+		<script type="text/javascript" src="medrec/physician/js/app.js"></script>
+		<script type="text/javascript" src="medrec/physician/js/patient.service.js"></script>
+
+		<!--script>
+			var app = angular.module("clockApp", []);
+			app.controller("TimeCtrl", TimeCtrl);
+
+			function TimeCtrl($scope) {
+				var currentDate = new Date();
+				$scope.timeString = currentDate.toTimeString();
+			}
+		</script-->
+</body>
+
+</html>
