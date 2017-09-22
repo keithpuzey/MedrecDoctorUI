@@ -8,7 +8,7 @@
 	<title>Physician Home</title>
 </head>
 
-<body id="body" style="background-color: powderblue;">
+<body id="body">
 	<div id="bar" class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -16,17 +16,28 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="brand" href="#">Mary</a>
+				<a class="brand" href="#">
+					<font face="verdana">Mary J Oblige</font>
+				</a>
 
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li class="active"><a href="#">Home
-						</a></li>
-						<li><a data-toggle="modal" href="#logoutModal">Logout </a></li>
+						<li class="active">
+							<a href="#">
+								<font face="verdana">Home</font>
+							</a>
+						</li>
+						<li>
+							<a data-toggle="modal" href="#logoutModal">
+								<font face="verdana">Logout</font>
+							</a>
+						</li>
 					</ul>
 				</div>
 				<div class="navbar-text pull-right" ng-controller="TimeCtrl as T1">
-					<p>{{T1.timeString}}</p>
+					<p>
+						<font face="verdana">{{T1.timeString}}</font>
+					</p>
 				</div>
 			</div>
 		</div>
@@ -43,9 +54,7 @@
 		<div class="modal-body">
 			<h4>Please be sure to logout.</h4>
 			<form id="logout" name="logout" method="get" action="index.html" class="form-signin" enctype="application/x-www-form-urlencoded">
-				<input type="hidden" name="logout" value="logout" /> <input id="logout:action" type="submit" name="logout:action" value="Logout"
-				 class="btn btn-warning pull-right" /><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0"
-				 value="-6776802002692572453:1112229349385525763" autocomplete="off" />
+				<input type="submit" name="logout.action" value="Logout" class="btn btn-warning pull-right" />
 			</form>
 		</div>
 	</div>
@@ -59,17 +68,16 @@
 
 		<div class="contents">
 			<div class="alert alert-success fade in">
-				<button type="button" class="close" data-dismiss="alert">×</button> Successful Login.
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<font face="verdana">Successful Login.</font>
 			</div>
 
 			<div class="row">
 				<div class="span4">
-					<h3>Patient Info
-					</h3>
+					<h3>Patient Info</h3>
 				</div>
 			</div>
 			<div ng-controller="PatientDetailsCtrl">
-				<!--p>Select a Drug:</p-->
 				<div class="row">
 					<div class="span4">
 						<select ng-model="selectedPatient" ng-options="x.LASTNAME for x in patient" ng-init="selectedPatient = patient[0].LASTNAME"
@@ -79,39 +87,52 @@
 					</div>
 				</div>
 
-				<!--div class="contents"-->
-				<!--div class="offset1"-->
-				<!--table id="patientTable" class="table table-hove span8"-->
-
 				<table id="patientTable" class="table table-hove span8">
 					<thead>
 						<tr>
-							<th scope="col">Username</th>
-							<th scope="col">Firstname</th>
-							<th scope="col">Lastname</th>
-							<th scope="col">Gender</th>
-							<th scope="col">DOB</th>
-							<th scope="col">SSN</th>
+							<th scope="col">
+								<font face="verdana">Username</font>
+							</th>
+							<th scope="col">
+								<font face="verdana">Firstname</font>
+							</th>
+							<th scope="col">
+								<font face="verdana">Lastname</font>
+							</th>
+							<th scope="col">
+								<font face="verdana">Gender</font>
+							</th>
+							<th scope="col">
+								<font face="verdana">DOB</font>
+							</th>
+							<th scope="col">
+								<font face="verdana">SSN</font>
+							</th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
 							<td>
-								{{selectedPatient.USERNAME}}
+								<font face="verdana">{{selectedPatient.USERNAME}}</font>
 							</td>
 							<td>
-								{{selectedPatient.FIRSTNAME}}
+								<font face="verdana">{{selectedPatient.FIRSTNAME}}</font>
 							</td>
 							<td>
-								{{selectedPatient.LASTNAME}}
+								<font face="verdana">{{selectedPatient.LASTNAME}}</font>
 							</td>
-							<td>{{selectedPatient.GENDER}} </td>
-							<td>{{selectedPatient.DOB}} </td>
-							<td>{{selectedPatient.SSN}} </td>
+							<td>
+								<font face="verdana">{{selectedPatient.GENDER}}</font>
+							</td>
+							<td>
+								<font face="verdana">{{selectedPatient.DOB | limitTo:letterLimit}} </font>
+							</td>
+							<td>
+								<font face="verdana">{{selectedPatient.SSN}}</font>
+							</td>
 						</tr>
 					</tbody>
 				</table>
-				<!--/div-->
 			</div>
 
 			<div class="row">
@@ -121,53 +142,45 @@
 				</div>
 			</div>
 			<div ng-controller="DrugListCtrl">
-				<!--p>Select a Drug:</p-->
 				<select ng-model="selectedPrescription" ng-options="x.NAME for x in drug" ng-init="selectedPrescription = drug[0].NAME" ng-change="selectedItemChanged()">
 					   <option value="">-- please choose a drug --</option>
 					</select>
-				<h4>You have selected prescription: {{selectedPrescription.NAME}}</h4>
+				<button class="btn btn-primary" ng-click="toggle = !toggle">{{toggleText}}</button>
+				<button class="btn btn-primary" ng-click="invokeButttonPressed()">Invoke</button>
+				<!--button class="btn btn-primary" ng-click="liveButttonPressed()">Live</button>
+				<button class="btn btn-primary" ng-click="virtualButttonPressed()">Virtualf</button-->
+				<h5>
+					<font face="verdana">You have selected prescription: {{selectedPrescription.NAME}}</font>
+				</h5>
 				<br>
 
 				<div ng-if="hasDrugInfo">
-					<p>Company Number: {{drugresult.companynumb}}</p>
-					<p>Sender Organization: {{drugresult.sender.senderorganization}}</p>
-					<p>Patient Reactions: {{drugresult.patient.reaction[0].reactionmeddrapt}}</p>
-					<p>Drug Indication: {{drugresult.patient.drug[0].drugindication}}</p>
-					<p>Medicinal Product: {{drugresult.patient.drug[0].medicinalproduct}}</p>
+					<p>
+						<font face="verdana">Company Number: {{drugresult.companynumb}}</font>
+					</p>
+					<p>
+						<font face="verdana">Sender Organization: {{drugresult.sender.senderorganization}}</font>
+					</p>
+					<p>
+						<font face="verdana">Patient Reactions: {{drugresult.patient.reaction[0].reactionmeddrapt}}</font>
+					</p>
+					<p>
+						<font face="verdana">Drug Indication: {{drugresult.patient.drug[0].drugindication}}</font>
+					</p>
+					<p>
+						<font face="verdana">Medicinal Product: {{drugresult.patient.drug[0].medicinalproduct}}</font>
+					</p>
 
-					<p>Manufacturer Names:
+					<p>
+						<font face="verdana">Manufacturer Names:</font>
 						<ul>
 							<li ng-repeat="name in manufacturer">
-								{{name}}
+								<font face="verdana">{{name}}</font>
 							</li>
 						</ul>
 					</p>
 				</div>
 			</div>
-
-
-
-
-			<!--div class="row">
-      <div class="span4 offset1">
-        <h3>Pending requests.</h3>
-
-        <p>View pending applicant details and approve or deny requests.</p>
-<form id="viewRegistered" name="viewRegistered" method="post" action="/medrec/admin/adminHome.xhtml" enctype="application/x-www-form-urlencoded">
-<input type="hidden" name="viewRegistered" value="viewRegistered" />
-<input id="viewRegistered:action" type="submit" name="viewRegistered:action" value="Go" class="btn btn-primary btn-inverse pull-right" /><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:1" value="-6776802002692572453:1112229349385525763" autocomplete="off" />
-</form>
-      </div>
-      <div class="span4 offset1">
-        <h3>Statistics
-        </h3>
-
-        <p>Generate reports with financial statistics for patients, physicians, and prescriptions over a specified time period.
-        </p>
-        <a class="btn btn-primary btn-inverse pull-right" href="/medrec/admin/financialStatistics.xhtml">Go</a>
-      </div>
-    </div>
-    </div-->
 
 			<div class="row footer text-center">
 				<hr />

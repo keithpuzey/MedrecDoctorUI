@@ -1,41 +1,35 @@
-
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="medrecApp">
+
 <head id="head">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta name="description" content="Medical Records" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Physician Login</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="description" content="Medical Records" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Physician Login</title>
 </head>
-<body id="body" style="background-color: powderblue;">
+
+<!--body id="body" style="background-color: powderblue;"-->
+<body id="body">
 	<div id="bar" class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
-				<button type="button" class="btn btn-navbar" data-toggle="collapse"
-					data-target=".nav-collapse">
+				<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="brand" href="#">Welcome to Medical Records</a>
+				<a class="brand" href="#">
+					<font face="verdana">Welcome to Medical Records</font>
+				</a>
 				<div class="navbar-text pull-right" ng-controller="TimeCtrl as T1">
-					<p>{{T1.timeString}}</p>
+					<p>
+						<font face="verdana">{{T1.timeString}}</font>
+					</p>
 				</div>
-
-				<!--div class="nav-collapse collapse">
-          <ul class="nav">
-    <li class="active"><a href="/medrec/start.xhtml">Home</a></li>
-    <li><a href="/medrec/physician/../index.xhtml">Login</a></li>
-    <li><a href="/docs/server/medrec/docs/introduction.html" target="viewer">Documentation</a></li>
-    <li><a href="http://www.oracle.com/technetwork/index.html" data-toggle="tooltip" title="http://www.oracle.com/technetwork/index.html">Oracle</a>
-    </li>
-    <li><a href="/../console">Console</a></li>
-          </ul>
-        </div-->
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="blank80"></div>
 
 	<div class="hide">
@@ -45,111 +39,96 @@
 	<div id="container" class="container">
 		<hr class="featurette-divider" />
 		<div class="contents">
-			<div class="row">
-				<div class="span4 offset1">
-					<br />
-					<form id="physicianLogin" name="physicianLogin" method="post"
-						action="/medrec/physician/login.xhtml"
-						enctype="application/x-www-form-urlencoded">
-						<input type="hidden" name="physicianLogin" value="physicianLogin" />
-						<fieldset>
-							<legend>Login information:</legend>
-							<table border="0" cellpadding="5" cellspacing="3">
-								<tbody>
-									<tr>
-										<td><label for="physicianLogin:usernameInput">Email</label></td>
-										<!--td><input id="physicianLogin:usernameInput" type="text" name="physicianLogin:usernameInput" maxlength="20" size="20" placeholder="mary@md.com" autofocus="true" required="true" /></td-->
-										<td><input id="physicianLogin:usernameInput" type="text"
-											name="usernameInput" maxlength="20" size="20"
-											placeholder="mary@md.com" autofocus="true" required="true" /></td>
-									</tr>
-									<tr>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td><label for="physicianLogin:passwordInput">Password</label></td>
-										<!--td><input id="physicianLogin:passwordInput" type="password" name="physicianLogin:passwordInput" value="" maxlength="10" size="20" /></td-->
-										<td><input id="physicianLogin:passwordInput"
-											type="password" name="passwordInput" value="" maxlength="10"
-											size="20" /></td>
-									</tr>
-									<tr>
-										<td></td>
-										<td></td>
-									</tr>
-									<tr>
-										<td></td>
-										<!--td><input id="physicianLogin:action" type="submit" name="physicianLogin:action" value="Submit" class="btn btn-primary"/></td-->
-										<td><input id="physicianLogin:action" type="button"
-											value="Login" class="btn btn-primary"
-											onclick="check(this.form)" /></td>
-									</tr>
-								</tbody>
-							</table>
-						</fieldset>
-						<input type="hidden" name="javax.faces.ViewState"
-							id="j_id1:javax.faces.ViewState:0"
-							value="7550342732938906242:-7982970530600509311"
-							autocomplete="off" />
-					</form>
-				</div>
-				<div class="span4">
-					<h2>Physician</h2>
+			<div class="featurette">
+				<img id="physician-jpg" class="featurette-image pull-left" src="physician.jpg">
 
-					<p style="text-align: left;" style="font-family:courier">The
-						Physician application allows physicians and nurses to log in,
-						search and access patient profiles, create and review patient
-						medical records, and prescribe drug to patients.</p>
+				<h2 class="featurette-heading">Physician
+					<span class="muted">look up a patient, and prescribe medications.
+						  </span>
+				</h2>
 
-					<p>There is an existing physician (mary@md.com / weblogic).</p>
-				</div>
+				<p class="lead span4">
+					<font size="3" face="verdana">The Physician application allows physicians and nurses to log in, search and access patient profiles, create and review
+						patient medical records, and prescribe drug to patients.
+					</font>
+				</p>
+				<p class="lead span4">
+					<font size="3" face="verdana">There is an existing physician (mary@md.com / weblogic).</font>
+				</p>
+
+
+			</div>
+
+			<div class="span4">
+				<br />
+				<form id="physicianLogin" name="physicianLogin" method="post" action="/medrec/physician/login.xhtml" enctype="application/x-www-form-urlencoded">
+					<input type="hidden" name="physicianLogin" value="physicianLogin" />
+					<fieldset>
+						<legend>Login information:</legend>
+						<table border="0" cellpadding="5" cellspacing="3">
+							<tbody>
+								<tr>
+									<td><label for="physicianLogin:usernameInput"><font size="3" face="verdana">Email</font></label></td>
+									<td><input id="physicianLogin:usernameInput" type="text" name="usernameInput" maxlength="20" size="20" placeholder="mary@md.com"
+										 autofocus="true" required="true" /></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td><label for="physicianLogin:passwordInput"><font size="3" face="verdana">Password</font></label></td>
+									<td><input id="physicianLogin:passwordInput" type="password" name="passwordInput" value="" maxlength="10" size="20"
+										/></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td><input id="physicianLogin:action" type="button" value="Login" class="btn btn-primary" onclick="check(this.form)"
+										/></td>
+								</tr>
+							</tbody>
+						</table>
+					</fieldset>
+					<input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="7550342732938906242:-7982970530600509311"
+					 autocomplete="off" />
+				</form>
 			</div>
 		</div>
 
 		<div class="row footer text-center">
 			<hr />
 			<p class="copyright">
-				<a href="http://www.ca.com" target="_blank">CA Home</a> | <a
-					href="https://www.ca.com/us/products/product-list.html"
-					target="_blank">Products </a> | <a
-					href="https://www.ca.com/us/services-support.html?intcmp=headernav"
-					target="_blank">Services</a> | <a
-					href="https://www.ca.com/us/services-support/ca-support.html"
-					target="_blank">Support</a> | <a
-					href="https://www.ca.com/us/education-training.html?intcmp=headernav"
-					target="_blank">Education & Training</a> | <a
-					href="https://www.ca.com/us/partners.html?intcmp=headernav"
-					target="_blank">Partners</a> | <a
-					href="https://communities.ca.com/welcome" target="_blank">Communities</a>
-				| <a href="https://www.ca.com/us/company.html" target="_blank">About</a>
-				<br />Copyright © 2017, CA and/or its affiliates. All rights
-				reserved. <a
-					href="https://www.ca.com/us/company/contact-us.html?intcmp=headernav"
-					target="_blank">Contact Us</a><br />
+				<a href="http://www.ca.com" target="_blank">CA Home</a> | <a href="https://www.ca.com/us/products/product-list.html"
+				 target="_blank">Products </a> | <a href="https://www.ca.com/us/services-support.html?intcmp=headernav" target="_blank">Services</a>				| <a href="https://www.ca.com/us/services-support/ca-support.html" target="_blank">Support</a> | <a href="https://www.ca.com/us/education-training.html?intcmp=headernav"
+				 target="_blank">Education & Training</a> | <a href="https://www.ca.com/us/partners.html?intcmp=headernav" target="_blank">Partners</a>				| <a href="https://communities.ca.com/welcome" target="_blank">Communities</a> | <a href="https://www.ca.com/us/company.html"
+				 target="_blank">About</a>
+				<br />Copyright © 2017, CA and/or its affiliates. All rights reserved. <a href="https://www.ca.com/us/company/contact-us.html?intcmp=headernav"
+				 target="_blank">Contact Us</a><br />
 			</p>
 		</div>
 	</div>
-	
+
 	<link href="medrec/physician/css/bootstrap.css" rel="stylesheet" />
-	<link href="medrec/physician/css/bootstrap-responsive.css"
-		rel="stylesheet" />
+	<link href="medrec/physician/css/bootstrap-responsive.css" rel="stylesheet" />
 	<link href="medrec/physician/css/medrec.css" rel="stylesheet" />
 	<script type="text/javascript" src="medrec/physician/js/jquery.js"></script>
 	<script type="text/javascript" src="medrec/physician/js/bootstrap.js"></script>
 	<script type="text/javascript" src="medrec/physician/js/angular.js"></script>
 	<script type="text/javascript" src="medrec/physician/js/app.js"></script>
-	
+
 	<script language="javascript">
-		function check(form)/*function to check userid & password*/
-		{
+		function check(form)/*function to check userid & password*/ {
 			/*the following code checkes whether the entered userid and password are matching*/
 			if (form.usernameInput.value == "mary@md.com"
-					&& form.passwordInput.value == "weblogic") {
+				&& form.passwordInput.value == "weblogic") {
 				//window.open('PhysicianHome.html')/*opens the target page while Id & password matches*/
 				window.open('PhysicianHome.html', "_self");
 			} else {
-				alert("Error Password or Username")/*displays error message*/
+				alert("Error: Username and Password doesn't match")/*displays error message*/
 			}
 		}
 	</script>
