@@ -14,7 +14,7 @@ function DrugListCtrl($scope, $http) {
 	$scope.hasDrugInfo = false;
 
 	$http.get('http://172.17.17.91:8282/rest/abl/medrecdb/v1/main:DRUGS', {
-		headers: { "Authorization": "Basic YWRtaW46UGFzc3dvcmQx" }
+		headers: {'Authorization':'Basic YWRtaW46UGFzc3dvcmQx'}
 	})
 		.then(function (response) {
 			$scope.drug = response.data;
@@ -93,8 +93,11 @@ function DrugListCtrl($scope, $http) {
 		var brandname = $scope.selectedPrescription.NAME;
 		if ($scope.toggleText == "Live") {
 			URL = 'https://api.fda.gov/drug/event.json?search=brand_name:' + brandname;
+
+			
 		} else {
-			URL = 'http://localhost:54084/drug/event.json?search=brand_name:' + brandname;
+//			URL = 'http://localhost:54084/drug/event.json?search=brand_name:' + brandname;
+			URL = 'http://172.17.17.20:8001/drug/event.json?search=brand_name:' + brandname;
 		}
 
 		console.log(URL);

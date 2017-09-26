@@ -8,8 +8,9 @@
 
 		$scope.letterLimit = 10;
 
-		$http.get('http://172.17.17.91:8282/rest/abl/medrecdb/v1/main:PATIENTS', {
-			headers: { "Authorization": "Basic YWRtaW46UGFzc3dvcmQx" }
+//		$http.get('http://172.17.17.91:8282/rest/abl/medrecdb/v1/main:PATIENTS', {
+		$http.get('https://172.17.17.91:8443/medrecdb-patients', {
+			headers: {'Authorization':'Basic YWRtaW46UGFzc3dvcmQx'}
 		})
 			.then(function (response) {
 				$scope.patient = response.data;
