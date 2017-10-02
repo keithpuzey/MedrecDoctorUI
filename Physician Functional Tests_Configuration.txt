@@ -1,0 +1,4 @@
+echo exports.config = { >config.js
+echo seleniumAddress: 'http://localhost:4444/wd/hub', >>config.js
+echo specs: ['Test Cases 2_Configuration.txt'] >>config.js
+echo }; >> config.js
