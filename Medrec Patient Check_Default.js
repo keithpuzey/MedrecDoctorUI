@@ -1,0 +1,13 @@
+browser.ignoreSynchronization = true;
+browser.get('http://localhost/doctor');
+browser.get('http://172.17.17.40:7003/medrec/index.xhtml');
+element(by.css("a.btn.btn-primary")).click();
+browser.driver.sleep(3000);
+element(by.css('[name="adminLogin:usernameInput"]')).sendKeys('administrator');
+element(by.css('[name="adminLogin:passwordInput"]')).sendKeys('administrator123');
+element(by.css('[name="adminLogin:action"]')).click();
+element(by.css('[name="viewRegistered:action"]')).click();
+element(by.linkText('Exception: ^FIRSTNAME^.^LASTNAME^MetaFunctions : uf_resolve_meta_data_item : Invalid column FIRSTNAME referenced in AgD_Test_Data.AutomationVariable(10,1)')).click();
+element(by.linkText('Logout')).click();
+browser.driver.sleep(3000);
+element(by.css('[name="logout:action"]')).click();
