@@ -1,0 +1,80 @@
+Scenario Outline: Basic 
+Given A User attempts to stream a songWhen Wifi Capable 
+When Connected to Wifi
+When Wifi connection not fast enough
+When Not Connected to 4g
+When Connected to 3g
+When 3g connection fast enough
+When Wait for buffer "301ms"
+When Wait for buffer "260ms"
+When Wait for buffer "216ms"
+When Attempt to stream song
+When Stream Not Successful
+When Display error 'stream interrupted'
+When Throw Phone against wall
+When Not a Nokia Phone
+Then Phone is destroyed
+
+Scenario Outline: Basic(1) 
+Given A User attempts to stream a songWhen Not Wifi Capable
+When Connected to 4g
+When 4g Connection not fast enough
+When Display error 'no connection fast enough available'
+When Throw Phone against wall
+When Nokia Phone
+Then Wall is destroyed
+
+Scenario Outline: Basic(2) 
+Given A User attempts to stream a songWhen Wifi Capable 
+When Connected to Wifi
+When Wifi connection not fast enough
+When Connected to 4g
+When 4g Connection fast enough
+When Attempt to stream song
+When Stream Successful
+Then Music plays
+
+Scenario Outline: Basic(3) 
+Given A User attempts to stream a songWhen Wifi Capable 
+When Connected to Wifi
+When Wifi connection fast enough
+When Attempt to stream song
+When Stream Not Successful
+When Display error 'stream interrupted'
+When Quit Streaming
+Then Return to home screen
+
+Scenario Outline: Basic(4) 
+Given A User attempts to stream a songWhen Wifi Capable 
+When Not Connected to Wifi
+When Connected to 4g
+When 4g Connection fast enough
+When Attempt to stream song
+When Stream Not Successful
+When Display error 'stream interrupted'
+When Mark for download later
+Then Add song to download list
+
+Scenario Outline: Basic(5) 
+Given A User attempts to stream a songWhen Wifi Capable 
+When Connected to Wifi
+When Wifi connection not fast enough
+When Not Connected to 4g
+When Connected to 3g
+When 3g connection not fast enough
+When Display error 'no connection fast enough available'
+When Throw Phone against wall
+When Not a Nokia Phone
+Then Phone is destroyed
+
+Scenario Outline: Basic(6) 
+Given A User attempts to stream a songWhen Wifi Capable 
+When Connected to Wifi
+When Wifi connection not fast enough
+When Not Connected to 4g
+When Not Connected to 3g
+When Display error 'no connection fast enough available'
+When Throw Phone against wall
+When Not a Nokia Phone
+Then Phone is destroyed
+
