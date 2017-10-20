@@ -1,0 +1,107 @@
+Feature: DEFAULT_VARIABLE_VALUES_PATH 
+
+Scenario Outline: Test Cases 1 
+Given Open WebSiteWhen Administrator Login
+When Login Physician
+When Update Prescription
+When Prescription Not Updated
+When Display error 'Call support'
+When Visit Physician
+When Appointment Not Available
+Then Go to ER
+
+Then Logout
+
+Scenario Outline: Test Cases 2 
+Given Open WebSiteWhen Administrator Login
+When Login Physician
+When Update Prescription
+When Prescription Not Updated
+When Display error 'Call support'
+When Phone Physician
+Then Talk to Physician
+
+Then Logout
+
+Scenario Outline: Test Cases 3 
+Given Open WebSiteWhen Physician Login
+When Login Physician
+When Update Prescription
+When Prescription Updated
+Then Patient Healthy
+
+Then Logout
+
+Scenario Outline: Test Cases 4 
+Given Open WebSiteWhen Patient Login
+When Not Patient
+When Not New Patient
+When Display Error
+When Visit Physician
+When Appointment Available
+Then Make Appointment
+
+Then Logout
+
+Scenario Outline: Test Cases 5 
+Given Open WebSiteWhen Administrator Login
+When Login User
+Then Confirm User Details
+
+Then Logout
+
+Scenario Outline: Test Cases 6 
+Given Open WebSiteWhen Administrator Login
+When Login Physician
+When Update Prescription
+When Prescription Not Updated
+When Display error 'Call support'
+When Physician chat Session
+Then Chat Session with Physician
+
+Then Logout
+
+Scenario Outline: Test Cases 7 
+Given Open WebSiteWhen Physician Login
+When Login Physician
+When Update Prescription
+When Prescription Not Updated
+When Display error 'Call support'
+When Visit Physician
+When Appointment Not Available
+Then Go to ER
+
+Then Logout
+
+Scenario Outline: Test Cases 8 
+Given Open WebSiteWhen Administrator Login
+When Login Physician
+When Update Prescription
+When Prescription Not Updated
+When Display error 'Call support'
+When Phone Physician
+Then Talk to Physician
+
+Then Logout
+
+Scenario Outline: Test Cases 9 
+Given Open WebSiteWhen Administrator Login
+When Login Physician
+When Update Prescription
+When Prescription Not Updated
+When Display error 'Call support'
+When Physician chat Session
+Then Chat Session with Physician
+
+Then Logout
+
+Scenario Outline: Test Cases 10 
+Given Open WebSiteWhen Patient Login
+When Login Patient
+When Display Error
+When Visit Physician
+When Appointment Not Available
+Then Go to ER
+
+Then Logout
+
