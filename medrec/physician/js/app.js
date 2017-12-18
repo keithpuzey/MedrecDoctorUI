@@ -13,7 +13,7 @@ function TimeCtrl() {
 function DrugListCtrl($scope, $http) {
 	$scope.hasDrugInfo = false;
 
-	$http.get('http://172.17.17.91:8282/rest/abl/medrecdb/v1/main:DRUGS', {
+	$http.get('http://dev.ca.com:8282/rest/abl/medrecdb/v1/main:DRUGS', {
 		headers: {'Authorization':'Basic YWRtaW46UGFzc3dvcmQx'}
 	})
 		.then(function (response) {
