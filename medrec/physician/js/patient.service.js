@@ -9,7 +9,7 @@
 		$scope.letterLimit = 10;
 
 //		$http.get('http://172.17.17.91:8282/rest/abl/medrecdb/v1/main:PATIENTS', {
-		$http.get('https://dev.ca.com:8443/medrecdb-patients', {
+		$http.get('http://dev.ca.com:8080/medrecdb-patients', {
 			headers: {'Authorization':'Basic YWRtaW46UGFzc3dvcmQx'}
 		})
 			.then(function (response) {
