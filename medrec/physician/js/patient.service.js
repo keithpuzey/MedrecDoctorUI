@@ -10,7 +10,7 @@
 
 //		$http.get('http://172.17.17.91:8282/rest/abl/medrecdb/v1/main:PATIENTS', {
 		$http.get('http://dev.ca.com:8080/medrecdb-patients', {
-			headers: {'Authorization':'Basic YWRtaW46UGFzc3dvcmQx'}
+			headers: {'Authorization':'Basic YWRtaW46Q0FkZW1vMTIzIQ=='}
 		})
 			.then(function (response) {
 				$scope.patient = response.data;

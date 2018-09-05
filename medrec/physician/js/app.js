@@ -13,8 +13,8 @@ function TimeCtrl() {
 function DrugListCtrl($scope, $http) {
 	$scope.hasDrugInfo = false;
 
-	$http.get('http://dev.ca.com:8282/rest/abl/medrecdb/v1/main:DRUGS', {
-		headers: {'Authorization':'Basic YWRtaW46UGFzc3dvcmQx'}
+	$http.get('http://dev.ca.com:8282/rest/default/jyjow/v1/main:DRUGS', {
+		headers: {'Authorization':'Basic YWRtaW46Q0FkZW1vMTIzIQ=='}
 	})
 		.then(function (response) {
 			$scope.drug = response.data;
@@ -36,7 +36,7 @@ function DrugListCtrl($scope, $http) {
 
 	$scope.liveButttonPressed = function () {
 		var brandname = $scope.selectedPrescription.NAME;
-		var URL = 'https://api.fda.gov/drug/event.json?search=brand_name:' + brandname;
+		var URL = 'https://api.fda.gov/drug/event.json?search=brand_name=' + brandname;
 
 		console.log(URL);
 
@@ -60,7 +60,7 @@ function DrugListCtrl($scope, $http) {
 
 	$scope.virtualButttonPressed = function () {
 		var brandname = $scope.selectedPrescription.NAME;
-		var URL = 'http://localhost:54084/drug/event.json?search=brand_name:' + brandname;
+		var URL = 'http://localhost:54084/drug/event.json?search=brand_name=' + brandname;
 
 		console.log(URL);
 
@@ -92,12 +92,12 @@ function DrugListCtrl($scope, $http) {
 		var URL;
 		var brandname = $scope.selectedPrescription.NAME;
 		if ($scope.toggleText == "Live") {
-			URL = 'https://api.fda.gov/drug/event.json?search=brand_name:' + brandname;
+			URL = 'https://api.fda.gov/drug/event.json?search=brand_name=' + brandname;
 
 			
 		} else {
-//			URL = 'http://localhost:54084/drug/event.json?search=brand_name:' + brandname;
-			URL = 'http://172.17.17.20:8001/drug/event.json?search=brand_name:' + brandname;
+//			URL = 'http://localhost:54084/drug/event.json?search=brand_name=' + brandname;
+			URL = 'http://172.17.17.20:8001/drug/event.json?search=brand_name=' + brandname;
 		}
 
 		console.log(URL);
@@ -126,10 +126,10 @@ function DrugListCtrl($scope, $http) {
 	/*  Function to invoke API when the select drop-down changes
 	$scope.selectedItemChanged = function () {
 		var brandname = $scope.selectedPrescription.NAME;
-		var URL = 'https://api.fda.gov/drug/event.json?search=brand_name:' + brandname;     
+		var URL = 'https://api.fda.gov/drug/event.json?search=brand_name=' + brandname;     
  
 	/**	Desktop Virtual Service	     	
-		var URL = 'http://localhost:54084/drug/event.json?search=brand_name:' + brandname; 
+		var URL = 'http://localhost:54084/drug/event.json?search=brand_name=' + brandname; 
 		console.log(URL);
 
 		$http.get(URL)
